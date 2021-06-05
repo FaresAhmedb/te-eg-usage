@@ -88,17 +88,16 @@ usage_data_scraper = TeEgUsage(
 
 usage_data = usage_data_scraper.run() # .run(data_type="json") for json
 
-for info in usage_data:
-      print(" "*(14 - len(info))  + info +  "      " + str(usage_data[info]))
+print("\n".join("{}\t{}".format(k, v) for k, v in data.items()))
 
 # output:
-# data_timestamp      1622923340.4587903
-#       consumed      40.0
-#      remaining      100.0
-#     start_date      YYYY-MM-DD
-#   renewal_date      YYYY-MM-DD
-# remaining_days      DD
-#   renewal_cost      120.0
+# data_timestamp  1622923340.4587903
+# consumed        40.0
+# remaining       100.0
+# start_date      YYYY-MM-DD
+# renewal_date    YYYY-MM-DD
+# remaining_days  DD
+# renewal_cost    120.0
 ```
 
 ## Release History
