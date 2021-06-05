@@ -88,7 +88,7 @@ usage_data_scraper = TeEgUsage(
 
 usage_data = usage_data_scraper.run() # .run(data_type="json") for json
 
-print("\n".join("{}\t{}".format(k, v) for k, v in data.items()))
+print("\n".join("{}\t{}".format(k, v) for k, v in usage_data.items()))
 
 # output:
 # data_timestamp  1622923340.4587903
