@@ -3,13 +3,13 @@ from os.path import dirname, join, abspath
 
 setuptools.setup(
     name                          = "te-eg-usage",
-    version                       = "1.0.0",
-    description                   = "Telecome Egypt Usage - Selenium Simple scraper to get your data usage info",
+    version                       = "1.0.1",
+    description                   = "Telecome Egypt Usage - Selenium simple scraper to get your data usage info",
     long_description              = open(join(abspath(dirname(__file__)), "README.md")).read(),
     long_description_content_type = "text/markdown",
     author                        = "Fares Ahmed",
     author_email                  = "faresahmed@zohomail.com",
-    python_requires               = "~=3.5",
+    python_requires               = ">=3.4",
     url                           = "https://github.com/FaresAhmedb/te-eg-usage",
     entry_points                  = {
         "console_scripts": ["te-eg-usage=te_eg_usage:_main"],
@@ -17,7 +17,7 @@ setuptools.setup(
     include_package_data          =  True,
     install_requires              = ["selenium==3.141.0"],
     package_dir                   = {"": "src"},
-    packages                      = setuptools.find_packages(where="src"),
+    py_modules                    = ["te_eg_usage"],
     license                       = "GPLv3",
     classifers                    = [
         "Environment :: Console",
