@@ -40,8 +40,8 @@ $ export WE_PASSWORD=XXXXXXXX
 
 Windows:
 ```powershell
-> set WE_MOBILE_NUMBER=XXXXXXXXXX
-> set WE_PASSWORD=XXXXXXXX
+> $env:WE_MOBILE_NUMBER = XXXXXXXXXX
+> $env:WE_PASSWORD = XXXXXXXX
 ```
 
 Now you can use it!
