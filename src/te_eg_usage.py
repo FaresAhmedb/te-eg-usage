@@ -10,7 +10,7 @@ import time as _time
 
 
 __all__ = ["TeEgUsage"]
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Fares Ahmed <faresahmed@zohomail.com>"
 
 
@@ -87,7 +87,7 @@ class TeEgUsage:
             if not self.browser: # if no selenium browser was set manually
                 self.set_browser()
         except Exception as error:
-            _logging.fatal("couldn't set browser/webdriver `%s`", self.browser_name)
+            _logging.fatal("Couldn't set browser/webdriver `%s`", self.browser_name)
             raise error
 
         _logging.info("Webdriver %s set sucessfully", self.browser_name)
@@ -121,8 +121,8 @@ class TeEgUsage:
         return self.usage_data
 
     def login(self) -> None:
-        """Login to Telecome Egypt account using `self.mobile_number`, `self.password`
-        """
+        """Login to Telecome Egypt account using `self.mobile_number`, `self.password`"""
+
         from selenium.webdriver.common.keys import Keys
 
         self.browser.get(self.LOGIN_URL)
@@ -137,8 +137,8 @@ class TeEgUsage:
         _time.sleep(1)
 
     def get_usage_data(self) -> None:
-        """Get the usage data. DOESN'T WORK WITHOUT THE FUNCTION `TeEgUsage.login()`
-        """
+        """Get the usage data. DOESN'T WORK WITHOUT THE FUNCTION `TeEgUsage.login()`"""
+
         import re
 
         self.browser.get(self.USAGE_URL)
@@ -169,8 +169,8 @@ class TeEgUsage:
 
 
     def format_usage_data(self, data_type: str, json_indent=4):
-        """Format the Usage Data generated from `TeEgUsage.get_usage_data()`
-        """
+        """Format the Usage Data generated from `TeEgUsage.get_usage_data()`"""
+
         from  datetime import datetime
 
         # Replace all known float elements (e.g. [33, 19]) to float type
@@ -200,8 +200,8 @@ class TeEgUsage:
 
 
     def set_browser(self):
-        """Run the specified browser/webdriver
-        """
+        """Run the specified browser/webdriver"""
+
         from selenium import webdriver
         from os import devnull
 
@@ -223,11 +223,11 @@ class TeEgUsage:
 
 
 def _FirefoxOptionsOptmized():
-    from selenium.webdriver.firefox.options import Options
-
     """firefox but faster thanks to Eray Erdin
     https://erayerdin.hashnode.dev/how-to-make-selenium-load-faster-with-firefox-in-python-ck7ncjyvw00sd8ss1v4i5xob1
     """
+    from selenium.webdriver.firefox.options import Options
+
     options = Options()
 
     options.add_argument("--hide-scrollbars")
@@ -348,10 +348,7 @@ def _main(args=None) -> None:
     if args.debug:
         _logging.getLogger().setLevel("DEBUG")
 
-    if args.dict:
-        data_type = "dict"
-    else:
-        data_type = "json"
+    data_type = "dict" if args.dict else "json"
 
     get_usage_data = TeEgUsage(
         mobile_number=os.environ["WE_MOBILE_NUMBER"],
